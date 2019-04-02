@@ -1,0 +1,10 @@
+.Task {
+  min-width: 15%;
+  max-width: 60%;
+  min-height: 100px;
+  margin: 4px auto;
+  border: 1px solid #aaaaaa;
+  padding: 16px;
+  background-color: #ffaf;
+  word-wrap: break-word;
+}
