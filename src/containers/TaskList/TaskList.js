@@ -1,54 +1,35 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import AddTask from './AddTask/AddTask';
+import AddTask from './../../components/tasks/AddTask/AddTask';
+import * as actions from './../../store/actions';
 import Tasks from './Tasks/Tasks';
 
 class TaskList extends Component {
-  state = {
-    dummyTasks: [
-      {
-        id: 1,
-        title: 'Task1',
-        content: 'Content'
-      },
-      {
-        id: 2,
-        title: 'Task2',
-        content: 'Content'
-      },
-      {
-        id: 3,
-        title: 'Task3',
-        content: 'Content afsagfsasagfsasagfsasagfsasagfsasagfsasagfsasagfsasagfsasagfsa sagfsa'
-      },
-      {
-        id: 4,
-        title: 'Task4',
-        content: 'Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content '
-      },
-      {
-        id: 5,
-        title: 'Task5',
-        content: 'cont'
-      },
-      {
-        id: 6,
-        title: 'Task6',
-        content: 'cont'
-      }
-    ]
-  }
-
 
   render() {
-
     return (
       <React.Fragment>
-        <Tasks tasks={this.state.dummyTasks} />
-        <AddTask />
+        <Tasks
+          tasks={this.props.tasksByProps}
+          onRemoveTask={this.props.onRemoveTask} />
+        <AddTask onAddTask={this.props.onAddTask} />
       </React.Fragment>
     )
   }
 }
 
-export default TaskList;
+const mapStateToProps = state => {
+  return {
+    tasksByProps: state.tasksR.tasks
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddTask: (id, title, content) => dispatch({ type: actions.ADD_TASK, taskData: { id: id, title: title, content: content } }),
+    onRemoveTask: id => dispatch({ type: actions.REMOVE_TASK, id: id })
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TaskList);
