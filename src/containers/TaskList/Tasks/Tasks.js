@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Task from '../../../components/tasks/Task/Task';
 
@@ -10,6 +10,11 @@ const Tasks = props => {
     justifyContent: 'space-around',
     alignItems: 'baseline'
   };
+
+  // useEffect(() => {
+  //   console.log('This should run on create');
+  //   return () => console.log('This should run on destroy');
+  // }, []);
 
   return (
     <div style={style}>

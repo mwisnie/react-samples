@@ -6,5 +6,6 @@
   border: 1px solid #aaaaaa;
   padding: 16px;
   background-color: #ffaf;
+  white-space: pre-line;
   word-wrap: break-word;
 }

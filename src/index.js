@@ -1,16 +1,21 @@
+import './index.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'react-redux';
+import { combineReducers, compose, createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore, combineReducers } from 'redux';
 import taskListReducer from './store/reducers/taskList';
-import { Provider } from 'react-redux';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
   tasksR: taskListReducer
 })
-const store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 

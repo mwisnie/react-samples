@@ -1,11 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, } from 'react';
 import { connect } from 'react-redux';
 
-import AddTask from './../../components/tasks/AddTask/AddTask';
-import * as actions from './../../store/actions';
+import * as actionCreators from './../../store/actions';
+import AddTask from './AddTask/AddTask';
 import Tasks from './Tasks/Tasks';
 
 class TaskList extends Component {
+
+  componentDidMount() {
+    console.log('Fetching tasks');
+    this.props.fetchTasks();
+  }
 
   render() {
     return (
@@ -27,8 +32,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddTask: (id, title, content) => dispatch({ type: actions.ADD_TASK, taskData: { id: id, title: title, content: content } }),
-    onRemoveTask: id => dispatch({ type: actions.REMOVE_TASK, id: id })
+    fetchTasks: () => dispatch(actionCreators.fetchTasks()),
+    onAddTask: (id, title, content) => dispatch(actionCreators.addTask({ id: id, title: title, content: content })),
+    onRemoveTask: id => dispatch(actionCreators.removeTask(id))
   };
 }
 

@@ -1,0 +1,12 @@
+export const START_LOADING = 'START_LOADING';
+export const STOP_LOADING = 'STOP_LOADING';
+
+export const FETCH_TASKS_FAIL = 'FETCH_TASKS_FAIL';
+
+export const ADD_TASK_SUCCESS = 'ADD_TASK_SUCCESS';
+export const ADD_TASK_FAIL = 'ADD_TASK_FAIL';
+
+export const REMOVE_TASK_SUCCESS = 'REMOVE_TASK_SUCCESS';
+export const REMOVE_TASK_FAIL = 'REMOVE_TASK_FAIL';
+
+export const SET_TASKS = 'SET_TASKS';

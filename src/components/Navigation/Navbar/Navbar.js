@@ -28,6 +28,11 @@ const Navbar = props => {
                   <Link to="/todos">TODO</Link>
                 </Typography>
               </li>
+              <li>
+                <Typography variant="h6" color="inherit">
+                  <Link to="/signin">Sign in</Link>
+                </Typography>
+              </li>
             </ul>
           </nav>
 
